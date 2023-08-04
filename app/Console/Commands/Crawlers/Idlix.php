@@ -30,7 +30,7 @@ class Idlix extends Command
      *
      * @var string
      */
-    protected $description = 'Scrapping film from idlix website';
+    protected $description = 'Crawling movies from idlix website';
 
     /**
      * Execute the console command.
