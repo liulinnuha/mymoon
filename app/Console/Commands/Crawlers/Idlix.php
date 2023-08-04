@@ -7,7 +7,9 @@ use Symfony\Component\DomCrawler\Crawler;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Str;
+use Illuminate\Support\Arr;
+
+use App\Models\Idlix as TableIdilix;
 
 class Idlix extends Command
 {
@@ -50,7 +52,7 @@ class Idlix extends Command
                 $this->search($this->option('query'));
                 break;
             default:
-                $this->warn('Cooming Soon');
+                $this->getWP();
                 break;
 
         }
@@ -99,7 +101,9 @@ class Idlix extends Command
 
         $wp_featureds = $this->featureds($wp);
 
-        print_r(['featured' => $wp_featureds]);
+        $result = ['featured' => $wp_featureds];
+
+        print_r($result);
     }
 
     private function getMovies($page = 0)
@@ -113,7 +117,7 @@ class Idlix extends Command
         $mp_movies = $this->allMovies($movies_page);
 
         print_r([
-            'featureds' => $mp_featureds['movies'],
+            'featureds' => $mp_featureds,
             'movies' => $mp_movies
         ]);
 
@@ -133,18 +137,13 @@ class Idlix extends Command
 
         $tvshows = $this->byType($featureds, 'tvshows');
 
-        $results = [
-            'movies' => $movies,
-            'tvshows' => $tvshows
-        ];
-
-        return array_filter($results);
+        return array_merge($movies, $tvshows);
     }
 
     private function byType(Crawler $crawler, $type)
     {
         return $crawler->filter('article.item.'.$type)
-            ->each(function(Crawler $article) use(&$results){
+            ->each(function(Crawler $article) use(&$results, $type){
 
 
                 $title = $article->filter('h3 a')->text();
@@ -156,6 +155,7 @@ class Idlix extends Command
 
                 $results = [
                     'title' => $title,
+                    'type' => $type,
                     'link' => $link,
                     'rating' => $rating,
                     'quality' => $quality,
