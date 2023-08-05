@@ -23,7 +23,11 @@ class Idlix extends Command
      *
      * @var string
      */
-    protected $signature = 'crawler:idlix {type?} {--query=} {--page=} {--cache=1}';
+    protected $signature = 'crawler:idlix 
+                            {type? : wp|movies|search|default=wp (crawling welcome page of Idlix)}
+                            {--query= : search query}
+                            {--page= : page of movies index}
+                            {--cache=1}';
 
     /**
      * The console command description.
