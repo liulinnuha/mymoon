@@ -6,45 +6,32 @@ Available command features:
 
 ## Example of usage:
 ### *Idlix Cralwer*
+#### Usage:
 ```php
-Usage:
-  php artisan crawler:idlix [options] [--] [<type>]
-
-Arguments:
-  type                  wp|movies|search|default=wp (crawling welcome page of Idlix)
-
-Options:
-      --query[=QUERY]   
-      --page[=PAGE]     
-      --cache[=CACHE]    [default: "1"]
-  -h, --help            Display help for the given command. When no command is given display help for the list command
-  -q, --quiet           Do not output any message
-  -V, --version         Display this application version
-      --ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
-  -n, --no-interaction  Do not ask any interactive question
-      --env[=ENV]       The environment the command should run under
-  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+  php artisan crawler:idlix --help
 ```
 Another example of usage :
 ```php
-php artisan crawler:idlix {type} (wp|movies --page=2|search --query=oppenheimer) --cache= (default=1|true)"
+php artisan crawler:idlix wp
+php artisan crawler:idlix --query=oppenheimer
+php artisan crawler:idlix movies --page=2
 ```
 ### *kemdikbud data searcher*
 #### Usage:
 ```php
-  php artisan kemdikbud:find [options]
+  php artisan kemdikbud:find --help
+ ```
+Another example of usage :
+```php
+php artisan kemdikbud:find --nm="Someone" --pt="Universitas Bina Sarana Informatika"
+```
 
-Options:
-      --pt[=PT]         Nama PT atau Nama Universitasnya
-      --np[=NP]         Nama Prodi
-      --nm[=NM]         Nama Mahasiswa
-      --nd[=ND]         Nama Dosen
-      --nim[=NIM]       Nomor Induk Mahasiswa
-      --nidn[=NIDN]     nidn
-  -h, --help            Display help for the given command. When no command is given display help for the list command
-  -q, --quiet           Do not output any message
-  -V, --version         Display this application version
-      --ansi|--no-ansi  Force (or disable --no-ansi) ANSI output
-  -n, --no-interaction  Do not ask any interactive question
-      --env[=ENV]       The environment the command should run under
-  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+### *kemdikbud data detail*
+#### Usage:
+```php
+  php artisan kemdikbud:detail --help
+ ```
+ Another example of usage :
+```php
+php artisan kemdikbud:detail /data_mahasiswa/MDNDREU0NDYtOTMxRS00RTg3LTk5REUtOTg5RTQxRUQ4NDhG --type=mhs
+```
