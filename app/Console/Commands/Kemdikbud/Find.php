@@ -3,10 +3,8 @@
 namespace App\Console\Commands\Kemdikbud;
 
 use Illuminate\Console\Command;
-use Symfony\Component\DomCrawler\Crawler;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Arr;
 
 class Find extends Command
