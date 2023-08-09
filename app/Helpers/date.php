@@ -109,6 +109,27 @@ if(!function_exists('getDayBday')){
 	}
 }
 
+if(!function_exists('getNeptu')){
+	function getNeptu($string)
+	{
+		$neptuArray = [
+		    'Senin' => 5,
+		    'Selasa' => 4,
+		    'Rabu' => 3,
+		    'Kamis' => 7,
+		    'Jumat' => 8,
+		    'Sabtu' => 6,
+		    'Minggu' => 9,
+		    'Legi' => 5,
+		    'Pahing' => 9,
+		    'Pon' => 7,
+		    'Wage' => 4
+		];
+
+		return $neptuArray[$string];
+	}
+}
+
 
 
 
